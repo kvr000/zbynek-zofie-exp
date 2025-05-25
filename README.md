@@ -1,0 +1,3 @@
+# Zofie's experiments
+
+Just learning and playing...
