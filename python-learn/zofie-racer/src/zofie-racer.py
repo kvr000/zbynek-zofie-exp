@@ -107,17 +107,17 @@ class RacingGame:
             right = right_col * CELL_WIDTH
 
             # Green grass
-            screen.draw.filled_rect(Rect(0, top, left, CELL_HEIGHT), "green")
-            screen.draw.filled_rect(Rect(right, top, COLS * CELL_WIDTH - right, CELL_HEIGHT), "green")
+            screen.draw.filled_rect(Rect(0, top, left, CELL_HEIGHT), "lime green")
+            screen.draw.filled_rect(Rect(right, top, COLS * CELL_WIDTH - right, CELL_HEIGHT), " lime green")
 
             # Kerbs
             screen.draw.filled_rect(
                 Rect(left, top, CELL_WIDTH, CELL_HEIGHT),
-                ("white", "red")[(y + self.kerb_offset) & 1]
+                ("white", "cyan")[(y + self.kerb_offset) & 1]
             )
             screen.draw.filled_rect(
                 Rect(right - CELL_WIDTH, top, CELL_WIDTH, CELL_HEIGHT),
-                ("white", "red")[(y + self.kerb_offset + 1) & 1]
+                ("white", "cyan")[(y + self.kerb_offset + 1) & 1]
             )
 
             # Track surface
@@ -130,14 +130,14 @@ class RacingGame:
         self.draw_car(screen.surface, Rect(self.player_pos * CELL_WIDTH, (ROWS - 2) * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT))
 
         # Statistics
-        screen.draw.text(f"Speed: {self.speed * 3.6:.1f} km/h", (5, 0), fontsize=CELL_HEIGHT * 3, color="darkblue")
-        screen.draw.text(f"Distance: {self.distance / 1000.0:.3f} km", topright=(WIDTH - 5, 0), fontsize=CELL_HEIGHT * 3, color="darkblue")
+        screen.draw.text(f"Speed: {self.speed * 3.6:.1f} km/h", (5, 0), fontsize=CELL_HEIGHT * 3, color="darkorange")
+        screen.draw.text(f"Distance: {self.distance / 1000.0:.3f} km", topright=(WIDTH - 5, 0), fontsize=CELL_HEIGHT * 3, color="cyan")
 
         # Crash
         if self.state < 0:
-            screen.draw.text("i crashed!", center=(WIDTH // 2, HEIGHT // 2), fontsize=CELL_HEIGHT * 10, color="black")
+            screen.draw.text("you crashed!", center=(WIDTH // 2, HEIGHT // 2), fontsize=CELL_HEIGHT * 10, color="cyan")
 
-    def draw_car(self, surface: pygame.Surface, cell_rect: pygame.Rect, color: tuple = (64, 64, 192)) -> None:
+    def draw_car(self, surface: pygame.Surface, cell_rect: pygame.Rect, color = "orange") -> None:
         car_surface = pygame.Surface((CELL_WIDTH * 3, CELL_HEIGHT * 3), pygame.SRCALPHA)
 
         x, y, w, h = CELL_WIDTH, CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT
@@ -160,7 +160,7 @@ class RacingGame:
         pygame.draw.rect(car_surface, (0, 0, 0), (cx - wing_width // 2, y + h, wing_width, wing_height))  # Rear
 
         # Cockpit
-        pygame.draw.ellipse(car_surface, (50, 50, 50), (cx - w // 8, cy - h // 12, w // 4, h // 6))
+        pygame.draw.ellipse(car_surface,(50,50,50) , (cx - w // 8, cy - h // 12, w // 4, h // 6))
 
         # Tires
         tire_offsets = [
@@ -170,7 +170,7 @@ class RacingGame:
             (w * 0.5, h * 0.4),
         ]
         for dx, dy in tire_offsets:
-            pygame.draw.circle(car_surface, (0, 0, 0), (int(cx + dx), int(cy + dy)), tire_radius)
+            pygame.draw.circle(car_surface,("limegreen"), (int(cx + dx), int(cy + dy)), tire_radius)
 
         rotated = pygame.transform.rotozoom(car_surface, (45, 0, -45)[self.player_dir + 1], 1)
         target_rect = rotated.get_rect(center=cell_rect.center)
@@ -178,7 +178,7 @@ class RacingGame:
 
     def reinit_game(self):
         pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN | pygame.SCALED if self.is_fullscreen else 0)
-        pygame.display.set_caption("Zbynek Racer Game")
+        pygame.display.set_caption("Zofie Racer Game")
         car_surface = pygame.Surface((CELL_WIDTH, CELL_HEIGHT), pygame.SRCALPHA)
         game.draw_car(car_surface, Rect(0, 0, CELL_WIDTH, CELL_HEIGHT))
         pygame.display.set_icon(car_surface)
