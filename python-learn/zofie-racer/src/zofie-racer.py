@@ -107,8 +107,8 @@ class RacingGame:
             right = right_col * CELL_WIDTH
 
             # Green grass
-            screen.draw.filled_rect(Rect(0, top, left, CELL_HEIGHT), "lime green")
-            screen.draw.filled_rect(Rect(right, top, COLS * CELL_WIDTH - right, CELL_HEIGHT), " lime green")
+            screen.draw.filled_rect(Rect(0, top, left, CELL_HEIGHT), "red")
+            screen.draw.filled_rect(Rect(right, top, COLS * CELL_WIDTH - right, CELL_HEIGHT), "blue")
 
             # Kerbs
             screen.draw.filled_rect(
@@ -123,7 +123,7 @@ class RacingGame:
             # Track surface
             screen.draw.filled_rect(
                 Rect(left + CELL_WIDTH, top, right - left - 2 * CELL_WIDTH, CELL_HEIGHT),
-                "gray"
+                "black"
             )
 
         # Draw car
