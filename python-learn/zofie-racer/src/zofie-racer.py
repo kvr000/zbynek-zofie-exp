@@ -107,17 +107,17 @@ class RacingGame:
             right = right_col * CELL_WIDTH
 
             # Green grass
-            screen.draw.filled_rect(Rect(0, top, left, CELL_HEIGHT), "red")
-            screen.draw.filled_rect(Rect(right, top, COLS * CELL_WIDTH - right, CELL_HEIGHT), "blue")
+            screen.draw.filled_rect(Rect(0, top, left, CELL_HEIGHT), "light blue")
+            screen.draw.filled_rect(Rect(right, top, COLS * CELL_WIDTH - right, CELL_HEIGHT), " light blue")
 
             # Kerbs
             screen.draw.filled_rect(
                 Rect(left, top, CELL_WIDTH, CELL_HEIGHT),
-                ("white", "cyan")[(y + self.kerb_offset) & 1]
+                ("lemon chiffon", "cyan")[(y + self.kerb_offset) & 1]
             )
             screen.draw.filled_rect(
                 Rect(right - CELL_WIDTH, top, CELL_WIDTH, CELL_HEIGHT),
-                ("white", "cyan")[(y + self.kerb_offset + 1) & 1]
+                ("lemon chiffon", "cyan")[(y + self.kerb_offset + 1) & 1]
             )
 
             # Track surface
@@ -137,7 +137,7 @@ class RacingGame:
         if self.state < 0:
             screen.draw.text("you crashed!", center=(WIDTH // 2, HEIGHT // 2), fontsize=CELL_HEIGHT * 10, color="cyan")
 
-    def draw_car(self, surface: pygame.Surface, cell_rect: pygame.Rect, color = "orange") -> None:
+    def draw_car(self, surface: pygame.Surface, cell_rect: pygame.Rect, color = "plum") -> None:
         car_surface = pygame.Surface((CELL_WIDTH * 3, CELL_HEIGHT * 3), pygame.SRCALPHA)
 
         x, y, w, h = CELL_WIDTH, CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT
