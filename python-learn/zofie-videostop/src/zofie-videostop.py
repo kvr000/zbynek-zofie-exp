@@ -10,10 +10,12 @@ class VideostopGame:
     HEIGHT = 300
     ROLL_INTERVAL_MS = 300
 
-    WHITE = (245, 245, 245)
-    BLACK = (30, 30, 30)
-    GREEN = (40, 160, 60)
-    RED = (200, 60, 60)
+    TEXT_COLOR = (0, 0, 0)
+    BACKGROUND_COLOR = (0, 245, 245)
+    DICE_COLOR = (244, 0, 85)
+    DOT_COLOR = (240, 176, 28)
+    SUCCESS_COLOR = (40, 160, 60)
+    FAILED_COLOR = (200, 60, 60)
 
     DIE_SIZE = 100
     DOT_RADIUS = 10
@@ -78,14 +80,14 @@ class VideostopGame:
 
     def draw_die(self, value, x, y):
         rect = pygame.Rect(x, y, self.DIE_SIZE, self.DIE_SIZE)
-        pygame.draw.rect(self.screen, self.BLACK, rect, border_radius=12)
+        pygame.draw.rect(self.screen, self.DICE_COLOR, rect, border_radius=12)
         for dx, dy in self.DOT_POSITIONS[value]:
             cx = x + dx * self.DIE_SIZE
             cy = y + dy * self.DIE_SIZE
-            pygame.draw.circle(self.screen, self.WHITE, (int(cx), int(cy)), self.DOT_RADIUS)
+            pygame.draw.circle(self.screen, self.DOT_COLOR, (int(cx), int(cy)), self.DOT_RADIUS)
 
     def draw(self):
-        self.screen.fill(self.WHITE)
+        self.screen.fill(self.BACKGROUND_COLOR)
 
         spacing = 150
         start_x = 80
@@ -95,14 +97,14 @@ class VideostopGame:
 
         if self.rolling:
             msg = "Press SPACE to stop"
-            color = self.BLACK
+            color = self.TEXT_COLOR
         else:
             if self.dice[0] == self.dice[1] == self.dice[2]:
                 msg = "VIDEOSTOP! YOU WIN"
-                color = self.GREEN
+                color = self.SUCCESS_COLOR
             else:
                 msg = "Not equal — press R"
-                color = self.RED
+                color = self.FAILED_COLOR
 
         text = self.small_font.render(msg, True, color)
         self.screen.blit(text, text.get_rect(center=(self.WIDTH // 2, 40)))
