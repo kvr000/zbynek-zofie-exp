@@ -138,7 +138,7 @@ class RacingGame:
 
         # Crash
         if self.state < 0:
-            screen.draw.text("you crashed!", center=(WIDTH // 2, HEIGHT // 2), fontsize=CELL_HEIGHT * 10, color="cyan")
+            screen.draw.text("I crashed!", center=(WIDTH // 2, HEIGHT // 2), fontsize=CELL_HEIGHT * 10, color="cyan")
 
     def draw_car(self, surface: pygame.Surface, position: pygame.Rect, color: tuple = "plum") -> None:
         car_surface = pygame.Surface((CELL_WIDTH * 3, CELL_HEIGHT * 3), pygame.SRCALPHA)
