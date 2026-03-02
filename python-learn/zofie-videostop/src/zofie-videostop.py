@@ -10,7 +10,7 @@ class VideostopGame:
     HEIGHT = 300
     ROLL_INTERVAL_MS = 300
 
-    TEXT_COLOR = (0, 0, 0)
+    TEXT_COLOR = (24, 13, 242)
     BACKGROUND_COLOR = (0, 245, 245)
     DICE_COLOR = (244, 0, 85)
     DOT_COLOR = (240, 176, 28)
