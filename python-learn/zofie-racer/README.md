@@ -6,6 +6,16 @@ Created as inspiration for children what to try to code - originally from https:
 
 ![screenshot](doc/image/screenshot.png)
 
+## Install
+
+### 3d Ursina experiment
+
+```sh
+python3 -m venv .venv
+source .venv/bin/activate
+pip install ursina
+```
+
 ## License
 
 The code is released under version 2.0 of the [Apache License][].

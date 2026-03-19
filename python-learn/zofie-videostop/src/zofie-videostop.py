@@ -29,6 +29,11 @@ class VideostopGame:
         6: [(0.25, 0.25), (0.25, 0.5), (0.25, 0.75), (0.75, 0.25), (0.75, 0.5), (0.75, 0.75)]
     }
 
+    dice: list[int] = []
+    rolling: bool = True
+    last_ticks: int
+    roll_interval: int
+
     def __init__(self):
         pygame.init()
 
